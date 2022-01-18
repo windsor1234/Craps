@@ -5,29 +5,137 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.util.Scanner;
 public class Craps
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Craps
-     */
-    public Craps()
+    public static void main(String[] args)
     {
-        // initialise instance variables
-        x = 0;
+
+        Scanner in = new Scanner(System.in); //ask if they want to play craps
+        System.out.print("Would you like to play craps? (Y/N) ");
+        String response = in.nextLine();
+        while (!(response.equals("Y")) && !(response.equals("N")))
+        {
+            System.out.print("Only type (Y/N)");
+            response = in.nextLine();
+        }
+        if (response.equals("Y"))
+        {
+            System.out.print("Do you need instructions? (Y/N) "); //ask if they need instructions
+            String response1 = in.nextLine();
+            while (!(response1.equals("Y")) && !(response1.equals("N")))
+            {
+                System.out.print("Only type (Y/N)");
+                response1 = in.nextLine();
+            }
+            if (response1.equals("Y"))
+            {
+                System.out.println("Here are instructions");
+                System.out.println("1. A player rolls two six-sided dice and adds the numbers rolled together.");
+                System.out.println("2. On this first roll, a 7 or an 11 automatically wins, and a 2, 3, or 12 automatically loses, and play is over. If a 4, 5, 6, 8, 9, or 10 are rolled on this first roll, that number becomes the point.");
+                System.out.println("3. The player continues to roll the two dice again until one of two things happens: either they roll the point from that first roll again, in which case they win; or they roll a 7, in which case they lose.");
+            }
+            int die1;
+            int die2;
+            int point;
+            String response3 = "Y";
+            String response4 = "";
+            while (response3.equals("Y"))
+            {
+                System.out.print("Press <Enter> to roll your dice");
+                response4 = in.nextLine();
+                while (!(response4.equals("")))
+                {
+                    System.out.print("You didn't press <Enter> >:( Press <Enter> to roll the dice");
+                    response4 = in.nextLine();
+                }
+                System.out.println("Rolling dice...");
+                sleep(750);
+                die1 = (int) (Math.random()*6) + 1;
+                die2 = (int) (Math.random()*6) + 1;
+                System.out.println("You rolled a " + (die1 + die2));
+                if (die1+die2 == 7 || die1+die2 == 11)
+                {
+                    System.out.println(". You win!!!");
+                    System.out.print("Would you like to play again? (Y/N)");
+                    response3 = in.nextLine();
+                    while (!(response3.equals("Y")) && !(response3.equals("N")))
+                    {
+                        System.out.println("Only type (Y/N)");
+                        response3 = in.nextLine();
+                    }
+                }
+                else if (die1+die2 == 2 || die1+die2 == 3 || die1+die2 == 12)
+                {
+                    System.out.println("You lose. :(");
+                    System.out.print("Would you like to play again? (Y/N)");
+                    response3 = in.nextLine();
+                    while (!(response3.equals("Y")) && !(response3.equals("N")))
+                    {
+                        System.out.print("Only type (Y/N)");
+                        response3 = in.nextLine();
+                    }
+                }
+                else
+                {
+                    System.out.println((die1+die2) + " is your point");
+                    point = (die1 + die2);
+                    die1 = 0;
+                    die2 = 0;
+                    while ((die1+die2) != point && (die1+die2) != 7)
+                    {
+                        System.out.print("Press <Enter> to roll your dice");
+                        response4 = in.nextLine();
+                        while (!(response4.equals("")))
+                        {
+                            System.out.print("You didn't press <Enter> >:( Press <Enter> to roll the dice");
+                            response4 = in.nextLine();
+                        }
+                        System.out.println("Rolling dice...");
+                        sleep(750);
+                        die1 = (int) (Math.random()*6) + 1;
+                        die2 = (int) (Math.random()*6) + 1;
+                        System.out.println("You rolled a " + (die1 + die2));
+                    }
+                    if ((die1 + die2) == point)
+                    {
+                        System.out.print("You win! Do you want to play again? (Y/N)");
+                        response3 = in.nextLine();
+                        while (!(response3.equals("Y")) && !(response3.equals("N")))
+                        {
+                            System.out.print("Only type (Y/N)");
+                            response3 = in.nextLine();
+                        }
+                    }
+                    else if ((die1 + die2) == 7)
+                    {
+                        System.out.print("You lose. Do you want to play again? (Y/N)");
+                        response3 = in.nextLine();
+                        while (!(response3.equals("Y")) && !(response3.equals("N")))
+                        {
+                            System.out.print("Only type (Y/N)");
+                            response3 = in.nextLine();
+                        }
+                    }
+                }
+                point = -1;
+                die1 = -1;
+                die2 = -1;
+            }
+
+        }
+        System.out.println("Bye :(");
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public static void sleep(int milliseconds)
     {
-        // put your code here
-        return x + y;
+        try
+        {
+            Thread.sleep(milliseconds);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
     }
 }
