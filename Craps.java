@@ -139,3 +139,40 @@ public class Craps
         }
     }
 }
+
+/*
+
+COMMENTS FROM THE INSTRUCTOR:
+
+Jacob... this *is* Jacob's program, isn't it? ;)  I didn't see your name in the JavaDoc
+comments up there. Fortunately, I got it from the git username included in the log. 
+
+Really nice work on this, Jacob. The program executes the rules of the game of Craps
+just as it should. You also took the trouble to include a short delay in the presentation
+of the roll of the dice, almost as if the computer was waiting to see the result of the
+roll--very clever!
+
+A few things to improve on:
+
+1. The intention was for there to be a separate Die class that would interact with the
+   Craps.java main() program. That was by design, with the intention of having you
+   become more familiar with that process. You should have done that! :)
+
+2. In the handout for this assignment, there was information on how to make the Yes/No
+   responses answered with a default value by simply hitting [Enter], rather than having
+   to press "Y" or "N" for every answer. That's a useful strategy, and one that you
+   should know how to use. Be sure to check it out.
+
+3. You did some error-checking with the user input which is a really nice touch. That
+   *does* add a lot of code to your program, so in the future, you might consider
+   writing a separate `Response` class that would allow you to call a method in that
+   utility for performing that same function. That has the effect of simplifying your
+   code in the main(). Something to consider in subsequent projects!
+
+Overall, though, this is very nicely executed. Looking forward to seeing more of your
+work this semester!
+
+SCORE: 47/50
+
+*/
+
